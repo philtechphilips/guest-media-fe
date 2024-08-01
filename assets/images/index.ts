@@ -1,7 +1,4 @@
-import IMG_StarSvg from "./star.svg";
-import IMG_ManSvg from "./man.svg";
-import IMG_WomanSvg from "./woman.svg";
-import IMG_GoogleSvg from "./google.svg";
-import IMG_BackArrowSvg from "./backArrow.svg";
+import BG_IMG from "./wedding_bg.jpg";
+import COUPLE from "./couple.jpg";
 
-export { IMG_StarSvg, IMG_ManSvg, IMG_GoogleSvg, IMG_WomanSvg, IMG_BackArrowSvg};
+export { BG_IMG, COUPLE};

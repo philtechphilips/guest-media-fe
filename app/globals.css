@@ -9,6 +9,12 @@
 }
 
 @font-face {
+  font-family: "Love";
+  font-weight: 400;
+  src: url("../assets/fonts/MonumentExtended-Ultrabold.otf") format("opentype");
+}
+
+@font-face {
   font-family: "Satoshi";
   font-weight: 700;
   src: url("../assets/fonts/Satoshi-Bold.otf") format("opentype");
@@ -24,53 +30,4 @@ body {
   font-family: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   font-weight: 400;
-}
-
-#checkbox[type="checkbox"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  outline: none;
-}
-
-#checkbox[type="checkbox"]::before {
-  content: "";
-  display: inline-block;
-  width: 32px;
-  height: 32px;
-  border-radius: 2px;
-  background: #ffffff;
-}
-
-/* Style the checkbox when checked */
-#checkbox[type="checkbox"]:checked::before {
-  background-color: white;
-  content: "√"; 
-  font-family: "Font Awesome 5 Free"; 
-  color: black;
-  font-size: 16px;
-  text-align: center;
-  line-height: 40px;
-  outline: 1px solid #239FAC;
-} 
-
-.testimonial {
-  width: 433px;
-  height: 226px;
-  left: 0px;
-  top: 0px;
-  background: rgba(38, 51, 73, 0.21);
-  box-shadow: 0px 3px 32px rgba(11, 18, 29, 0.43);
-  border-radius: 10px;
-  padding: 32px 35px;
-}
-
-.slick-prev,
-.slick-next {
-  display: none !important;
-}
-
-.slick-dots {
-  bottom: -75px !important;
 }
