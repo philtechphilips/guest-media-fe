@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Home() {
   const [uploadPageActive, setUploadPageActive] = useState(false);
@@ -43,19 +44,19 @@ export default function Home() {
         />
       </div>
 
-      <div className="py-10 px-5">
-        <h1 className="uppercase text-white text-xs mb-2 heading">
+      <div className="py-10 pb-5 px-5">
+        <h1 className="uppercase text-white text-xs mb-6 heading">
           A promise of forever
         </h1>
         <h1
-          className="uppercase text-white font-[Love] text-4xl mb-2 heading"
-          style={{ letterSpacing: "4px" }}
+          className="uppercase text-white font-[Love] text-5xl mb-6 heading"
+          style={{ letterSpacing: "4px", transform: "scaleY(1.5)"}}
         >
           seye &
         </h1>
         <h1
-          className="uppercase text-white font-[Love] text-4xl mb-2 heading"
-          style={{ letterSpacing: "4px" }}
+          className="uppercase text-white font-[Love] text-5xl mb-6 heading"
+          style={{ letterSpacing: "4px", transform: "scaleY(1.5)" }}
         >
           timileyin
         </h1>
@@ -66,12 +67,10 @@ export default function Home() {
           lasting memories together.
         </p>
 
-        <div
-          onClick={() => router.push("/upload-memory")}
-          className="text-white share-button cursor-pointer mt-2 border rounded-sm border-white w-fit px-4 py-1"
+        <Link href="/upload-memory"
         >
-          <p>Click to Upload</p>
-        </div>
+          <p className="text-white share-button cursor-pointer mt-5 border rounded-sm border-white w-fit px-4 py-1">Click to Upload</p>
+        </Link>
       </div>
       <div className="flex justify-center w-full gap-2 px-4">
         <div className="w-48 max-h-56 px-3 py-4 bg-white share-button">

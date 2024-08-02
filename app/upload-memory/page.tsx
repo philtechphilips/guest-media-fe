@@ -6,10 +6,12 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import Link from "next/link";
 
 const UploadPage: React.FC = () => {
   const [files, setFiles] = useState<File[]>([]);
   const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [progress, setProgress] = useState<number>(0);
   const router = useRouter();
 
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
@@ -49,8 +51,15 @@ const UploadPage: React.FC = () => {
     });
 
     try {
+      const interval = setInterval(() => {
+        setProgress((prevProgress) => {
+          const nextProgress = prevProgress + Math.random() * 1;
+          return nextProgress >= 90 ? 90 : nextProgress;
+        });
+      }, 1000);
+
       const response = await axios.post(
-        "http://localhost:8000/v1/upload",
+        `${process.env.NEXT_PUBLIC_APP_BASE_URL}/v1/upload`,
         formData,
         {
           headers: {
@@ -58,22 +67,23 @@ const UploadPage: React.FC = () => {
           },
         }
       );
+
+      clearInterval(interval);
+      setProgress(100);
       toast.success("Files uploaded successfully!");
     } catch (error) {
+      setProgress(0);
       console.log(error);
       toast.error("Error uploading files!");
     }
   };
 
   return (
-    <div className="w-full pb-20 p-5 bg-gray-50 animate-slideInFromRight">
-      <div className="flex items-center gap-2" onClick={() => router.push("/")}>
-        <FontAwesomeIcon
-          icon={faArrowLeft}
-          className="text-lg"
-        ></FontAwesomeIcon>
+    <div className="w-full pb-52 p-5 bg-gray-50">
+      <Link href="/" className="flex items-center gap-2">
+        <FontAwesomeIcon icon={faArrowLeft} className="text-lg" />
         <p className="text-lg font-semibold">Back</p>
-      </div>
+      </Link>
 
       <div>
         <section className="mt-12">
@@ -132,6 +142,15 @@ const UploadPage: React.FC = () => {
               </div>
             </div>
           </div>
+
+          {progress > 0 && (
+            <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
+              <div
+                className="bg-blue-500 h-2.5 rounded-full"
+                style={{ width: `${progress}%` }}
+              ></div>
+            </div>
+          )}
 
           <button
             type="submit"
